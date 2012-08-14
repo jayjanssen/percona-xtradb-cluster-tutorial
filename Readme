@@ -8,11 +8,18 @@ This box includes puppet, firewall is disabled and has a nice motd ;)
 
 How to use ?
 
+to boot them all at once:
+
+ vagrant up
+
+to boot them one by one:
+
 vagrant up node1
 vagrant up node2
 vagrant up node3
+vagrant up client
 
-And this is all, you have now 3 servers running Percona XtraDB Cluster !
+And this is all, you have now 3 servers running Percona XtraDB Cluster and one client in the same network !
 
 
 These recipes also install HAProxy on node1.  One for writes (single cluster node) and one for reads (rr of all cluster nodes).

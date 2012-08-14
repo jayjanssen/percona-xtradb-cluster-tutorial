@@ -35,3 +35,12 @@ node node3 {
 	
 }
 
+node client {
+	include percona::repository
+	include percona::cluster-client
+	include percona::toolkit	
+
+	Class['percona::repository'] -> Class['percona::cluster-client']
+	Class['percona::repository'] -> Class['percona::toolkit']
+
+}

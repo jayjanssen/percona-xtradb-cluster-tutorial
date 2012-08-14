@@ -9,6 +9,9 @@ class misc {
 		"node3":
 			ensure	=> "present",
 			ip	=> "192.168.70.4";
+		"client":
+			ensure	=> "present",
+			ip	=> "192.168.70.5";
 	}
 	service {
 			'iptables': ensure => 'stopped', enable => false;
