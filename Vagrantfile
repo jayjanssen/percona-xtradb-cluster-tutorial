@@ -50,5 +50,21 @@ Vagrant::Config.run do |config|
 			node3_puppet.options = "--verbose"
 		end
   end
+  config.vm.define :client do |client_config|
+		client_config.vm.box = "centos6"
+		client_config.vm.box_url = "https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box"
+		client_config.vm.host_name = "client"
+		client_config.ssh.max_tries = 100
+		#client_config.vm.boot_mode = :gui
+		client_config.vm.customize ["modifyvm", :id, "--memory", "256"]
+		client_config.vm.network :hostonly, "192.168.70.5"
+		client_config.vm.provision :puppet do |client_puppet|
+			client_puppet.pp_path = "/tmp/vagrant-puppet"
+			client_puppet.manifests_path = "manifests"
+			client_puppet.module_path = "modules"
+			client_puppet.manifest_file = "site.pp"
+			client_puppet.options = "--verbose"
+		end
+  end
 
 end
