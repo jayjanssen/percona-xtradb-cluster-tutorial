@@ -1,22 +1,4 @@
 class misc {
-	define installCPAN () {
-	  exec { "cpanLoad${title}":
-	    command => "/usr/local/bin/cpanm $name",
-	    path    => "/usr/bin:/usr/sbin:/bin:/sbin",
-	    unless  => "perl -I.cpan -M$title -e 1",
-	    timeout => 600,
-	    require => [ Package['perl-ExtUtils-MakeMaker'], Exec["initCPAN"] ],
-	  }
-	}
-
-	exec { "initCPAN":
-	  command =>  "curl -L http://cpanmin.us | perl - --self-upgrade",
-	  path    => "/usr/bin:/usr/sbin:/bin:/sbin",
-	  creates  => "/usr/local/bin/cpanm",
-		timeout => 300,
-		user => 'root'
-	}
-	
 	host {
 		"node1":
 			ensure	=> "present",
@@ -41,8 +23,6 @@ class misc {
 		'man': ensure => 'present';
 		'unzip': ensure => 'present';
 		'lsof': ensure => 'present';
-		'perl-AnyEvent': ensure => 'installed';
-		'perl-ExtUtils-MakeMaker': ensure => 'installed';
 	}
 	
 	file {
@@ -79,6 +59,4 @@ class misc {
 				creates => "/root/sakila-db.zip",
 				path => ['/bin','/usr/bin','/usr/local/bin'];
 	}
-	
-	installCPAN { "AnyEvent::DBI": }
 }
