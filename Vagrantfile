@@ -5,7 +5,7 @@ Vagrant::Config.run do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.define :node1 do |node1_config|
-		node1_config.vm.box = "centos6"
+		node1_config.vm.box = "centos6.3_percona-xtradb-tutorial"
 		node1_config.vm.box_url = "https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box"
 		node1_config.vm.host_name = "node1"
 		node1_config.vm.customize ["modifyvm", :id, "--memory", "256"]
@@ -19,7 +19,7 @@ Vagrant::Config.run do |config|
 		end
   end
   config.vm.define :node2 do |node2_config|
-		node2_config.vm.box = "centos6"
+		node2_config.vm.box = "centos6.3_percona-xtradb-tutorial"
 		node2_config.vm.box_url = "https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box"
 		node2_config.vm.host_name = "node2"
 		node2_config.vm.customize ["modifyvm", :id, "--memory", "256"]
@@ -33,7 +33,7 @@ Vagrant::Config.run do |config|
 		end
   end
   config.vm.define :node3 do |node3_config|
-		node3_config.vm.box = "centos6"
+		node3_config.vm.box = "centos6.3_percona-xtradb-tutorial"
 		node3_config.vm.box_url = "https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box"
 		node3_config.vm.host_name = "node3"
 		node3_config.vm.customize ["modifyvm", :id, "--memory", "256"]
